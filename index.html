@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>App Installer | Sika construction</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+    </head>
+    <body class="cfa-background">
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 text-center padding-top-20 margin-top-20">
+                    <img src="img/logo.png" />
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12 text-center padding-top-20">
+                    <a href="itms-services://?action=download-manifest&url=http://construction.ireland.sika.com/download/manifest.plist">
+                        <div id="appInstall" class="div-center padding-top-bottom-20 app-link-box div-center">
+                            <span>TAP HERE TO</span><br/>
+                            <span>INSTALL THE APP</span><br/>
+                            <span>ON YOUR DEVICE</span><br />
+                            <span class="orangebar margin-top-10"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12 text-center padding-top-20">
+                    <a href="Sika_Construction_Ireland_App_Dist.mobileprovision">
+                        <div id="ticketInstall" class="div-center padding-top-bottom-20 app-link-box div-center">
+                            <span>Installation Trouble?</span><br/>
+                            <span>Click here to</span><br/>
+                            <span>install the app certificate.</span><br />
+                            <span class="pinkbar margin-top-10"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function(){
+
+                // Variables
+                hostname = document.location.hostname;
+
+                $.ajax({
+                    url:"https://api.prowlapp.com/publicapi/add",
+                    cache:false,
+                    type: 'POST',
+                    timeout: 8000,
+                    data: {
+                        'apikey': 'c4d15ddc06fc620e0d5e52427d94b7211dc1d7c6',
+                        'application': 'Sika Construction Ireland App',
+                        'event': document.location.hostname + ' Sika Construction Ireland App Installed',
+                        'priority': 0,
+                        'description': 'A client has installed a mobile app from ' + document.location.hostname
+                    },
+                    success: function(data){},
+                    error: function(error){}
+                });
+            });
+        </script>
+    </body>
+</html>
